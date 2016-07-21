@@ -50,7 +50,7 @@ import java.util.Set;
  * queried by email or by phone number.
  */
 public class RecipientAlternatesAdapter extends CursorAdapter {
-    public static final int MAX_LOOKUPS = 50;
+    public static final int MAX_LOOKUPS = 100;
 
     private final long mCurrentId;
 

@@ -139,7 +139,7 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements
     // Visible for testing.
     /*package*/ static final int CHIP_LIMIT = 2;
 
-    private static final int MAX_CHIPS_PARSED = 50;
+    private static final int MAX_CHIPS_PARSED = 100;
 
     private int mSelectedChipTextColor;
     private int mUnselectedChipTextColor;
