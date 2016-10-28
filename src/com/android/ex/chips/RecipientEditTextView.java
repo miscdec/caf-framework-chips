@@ -516,7 +516,7 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements
         // If so, move the cursor back after the chips again.
         // Only exception is when we change the selection due to a selected chip.
         if (getOrientation() == ScreenOrientation.LANDSCAPE) {
-            if (getText().length() == end - start) {
+            if ((getText().length() != 0) && (getText().length() == (end - start))) {
                 mAllSelected = true;
             }
         }
@@ -2721,6 +2721,7 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements
                             // Add the separator token.
                             int deleteStart = editable.getSpanStart(toDelete);
                             int deleteEnd = editable.getSpanEnd(toDelete) + 1;
+                            deleteStart = (deleteStart < 0) ? 0 : deleteStart;
                             if (deleteEnd > editable.length()) {
                                 deleteEnd = editable.length();
                             }
