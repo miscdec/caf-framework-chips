@@ -516,7 +516,7 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements
         // If so, move the cursor back after the chips again.
         // Only exception is when we change the selection due to a selected chip.
         if (getOrientation() == ScreenOrientation.LANDSCAPE) {
-            if (getText().length() == end - start) {
+            if ((getText().length() != 0) && (getText().length() == (end - start))) {
                 mAllSelected = true;
             }
         }
