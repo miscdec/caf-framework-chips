@@ -2721,6 +2721,7 @@ public class RecipientEditTextView extends MultiAutoCompleteTextView implements
                             // Add the separator token.
                             int deleteStart = editable.getSpanStart(toDelete);
                             int deleteEnd = editable.getSpanEnd(toDelete) + 1;
+                            deleteStart = (deleteStart < 0) ? 0 : deleteStart;
                             if (deleteEnd > editable.length()) {
                                 deleteEnd = editable.length();
                             }
