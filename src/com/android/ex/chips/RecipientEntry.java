@@ -48,6 +48,11 @@ public class RecipientEntry {
      */
     public static final int ENTRY_TYPE_PERMISSION_REQUEST = 1;
 
+    /**
+     * @hide
+     */
+    public static final int ENTRY_TYPE_GROUP = 2;
+
     public static final int ENTRY_TYPE_SIZE = 3;
 
     private final int mEntryType;
@@ -247,6 +252,19 @@ public class RecipientEntry {
         return (displayNameSource > DisplayNameSources.PHONE) ? displayName : destination;
     }
 
+    /**
+     * @hide
+     */
+    public static RecipientEntry constructTopLevelEntryForGroup(int entryType, String displayName,
+            int displayNameSource, String destination, int destinationType, String destinationLabel,
+            long contactId, Long directoryId, long dataId, String thumbnailUriAsString,
+            boolean isValid, String lookupKey) {
+        return new RecipientEntry(entryType, pickDisplayName(displayNameSource,
+                displayName, destination), destination, destinationType, destinationLabel,
+                contactId, directoryId, dataId, (thumbnailUriAsString != null
+                ? Uri.parse(thumbnailUriAsString) : null), true, isValid, lookupKey);
+    }
+
     public int getEntryType() {
         return mEntryType;
     }
@@ -315,8 +333,8 @@ public class RecipientEntry {
     }
 
     public boolean isSelectable() {
-        return mEntryType == ENTRY_TYPE_PERSON
-                || mEntryType == ENTRY_TYPE_PERMISSION_REQUEST;
+        return mEntryType == ENTRY_TYPE_PERSON || mEntryType == ENTRY_TYPE_PERMISSION_REQUEST
+                || mEntryType == ENTRY_TYPE_GROUP;
     }
 
     @Override
